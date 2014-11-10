@@ -1,6 +1,6 @@
-<h1>Listing apps</h1>
+<h1>App Listing</h1>
 
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Name</th>
@@ -20,7 +20,7 @@
         <td><%= app.notes %></td>
         <td><%= link_to 'Show', app %></td>
         <td><%= link_to 'Edit', edit_app_path(app) %></td>
-        <td><%= link_to 'Destroy', app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', app, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
