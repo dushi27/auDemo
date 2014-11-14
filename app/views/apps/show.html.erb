@@ -10,10 +10,11 @@
   <%= @app.skill %>
 </p>
 
-<p>
-  <strong>Video link:</strong>
-  <%= @app.video_link %>
-</p>
+
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src=<%=link(@app.video_link)%>></iframe>
+</div>
+
 
 <p>
   <strong>Web link:</strong>
