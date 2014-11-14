@@ -2,12 +2,16 @@
 
 one:
   name: MyString
-  catagory: MyString
-  sub_catagory: MyString
-  notes: MyText
+  skill: MyString
+  video_link: MyString
+  web_link: MyString
+  price: 1.5
+  user_id: 1
 
 two:
   name: MyString
-  catagory: MyString
-  sub_catagory: MyString
-  notes: MyText
+  skill: MyString
+  video_link: MyString
+  web_link: MyString
+  price: 1.5
+  user_id: 1

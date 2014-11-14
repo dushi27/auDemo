@@ -18,7 +18,7 @@ class AppsControllerTest < ActionController::TestCase
 
   test "should create app" do
     assert_difference('App.count') do
-      post :create, app: { catagory: @app.catagory, name: @app.name, notes: @app.notes, sub_catagory: @app.sub_catagory }
+      post :create, app: { name: @app.name, price: @app.price, skill: @app.skill, user_id: @app.user_id, video_link: @app.video_link, web_link: @app.web_link }
     end
 
     assert_redirected_to app_path(assigns(:app))
@@ -35,7 +35,7 @@ class AppsControllerTest < ActionController::TestCase
   end
 
   test "should update app" do
-    patch :update, id: @app, app: { catagory: @app.catagory, name: @app.name, notes: @app.notes, sub_catagory: @app.sub_catagory }
+    patch :update, id: @app, app: { name: @app.name, price: @app.price, skill: @app.skill, user_id: @app.user_id, video_link: @app.video_link, web_link: @app.web_link }
     assert_redirected_to app_path(assigns(:app))
   end
 
