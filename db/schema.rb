@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110185028) do
-
-  create_table "apps", force: true do |t|
-    t.string   "name"
-    t.string   "catagory"
-    t.string   "sub_catagory"
-    t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20141114161349) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
