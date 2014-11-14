@@ -1,35 +1,24 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @app.name %>
-</p>
-
-<p>
-  <strong>Skill:</strong>
-  <%= @app.skill %>
-</p>
-
-
+<div class="panel panel-default">
+  <div class="panel-heading"><%= @app.name.upcase %></div>
+    
 <div class="embed-responsive embed-responsive-4by3">
   <iframe class="embed-responsive-item" src=<%=link(@app.video_link)%>></iframe>
 </div>
+  
+  <div class="panel-body">
+    <p>
+      <strong>Skill:</strong>
+      <%= @app.skill %>
+    </p>
+    <p>
+      <strong>Web link:</strong>
+      <%= @app.web_link %>
+    </p>
 
-
-<p>
-  <strong>Web link:</strong>
-  <%= @app.web_link %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @app.price %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @app.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_app_path(@app) %> |
+    <p>
+      <strong>Price:</strong>
+      <%= @app.price %>
+    </p>
+  </div>
 <%= link_to 'Back', apps_path %>
+</div>

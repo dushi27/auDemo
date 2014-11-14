@@ -21,3 +21,11 @@
 .navbar-default{
   margin-bottom:0px;
 }
+
+.panel-default{
+  margin-top:2%;
+}
+
+.btn li a{
+  color:white;
+}
