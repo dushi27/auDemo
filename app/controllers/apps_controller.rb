@@ -1,7 +1,33 @@
 class AppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
+  def communication   
+    @apps = App.where skill: 'Communication'
+    redirect_to root_path, notice: 'Do not have any apps in that skill catagory.' if @apps.empty
+    render 'index'
+  end
+  
+  def behavior
+    @apps = App.where(skill: 'Behavior Skills')
+    render 'index'
+  end
+  
+  def motor
+    @apps = App.where(skill: 'communication')
+    render 'index'
+  end
+  
+  def safty
+    @apps = App.where(skill: 'Safty Skills')
+    render 'index'
+  end
+  
+  def living
+    @apps = App.where(skill: 'Daily Living Skills')
+    render 'index'
+  end
+  
   def index
     @apps = App.all
   end
@@ -52,7 +78,8 @@ class AppsController < ApplicationController
 
   private
     def set_app
-      @app = App.find(params[:id])
+      #raise params.inspect
+     @app = App.find(params[:id])
     end
 
     def app_params

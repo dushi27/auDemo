@@ -12,9 +12,9 @@
         <p>Price: <%= app.price %></p>
       </div>
      
-        <%= link_to 'Vendor Site', app.web_link, class:'btn btn-info' %>
+        <%= link_to 'Vendor Site', "http://#{app.web_link}", class:'btn btn-info' %>
         <%= link_to 'Details', app, class:'btn btn-success' %>
-        <%if !(current_user).nil? && current_user.id == app.user_id%>
+        <%if user_signed_in? && current_user.id == app.user_id%>
           <%= link_to 'Edit', edit_app_path(app), class:'btn btn-warning' %>
           <%= link_to 'Delete', app, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'%>
         <%end%>   
