@@ -1,30 +1,23 @@
 class AppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
-  # GET /apps
-  # GET /apps.json
   def index
     @apps = App.all
   end
 
-  # GET /apps/1
-  # GET /apps/1.json
   def show
   end
 
-  # GET /apps/new
   def new
     @app = App.new
   end
 
-  # GET /apps/1/edit
   def edit
   end
 
-  # POST /apps
-  # POST /apps.json
   def create
-    @app = App.new(app_params)
+    @app = current_user.apps.create(app_params)
 
     respond_to do |format|
       if @app.save
@@ -37,8 +30,6 @@ class AppsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /apps/1
-  # PATCH/PUT /apps/1.json
   def update
     respond_to do |format|
       if @app.update(app_params)
@@ -51,8 +42,6 @@ class AppsController < ApplicationController
     end
   end
 
-  # DELETE /apps/1
-  # DELETE /apps/1.json
   def destroy
     @app.destroy
     respond_to do |format|
@@ -62,12 +51,10 @@ class AppsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_app
       @app = App.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def app_params
       params.require(:app).permit(:name, :skill, :video_link, :web_link, :price, :user_id)
     end

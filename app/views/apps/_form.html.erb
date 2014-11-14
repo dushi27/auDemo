@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :skill %><br>
-    <%= f.text_field :skill %>
+    <%= f.select :skill,  App::SKILLS,  prompt: "Select a skill" %>
   </div>
   <div class="field">
     <%= f.label :video_link %><br>
@@ -30,10 +30,6 @@
   <div class="field">
     <%= f.label :price %><br>
     <%= f.text_field :price %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
