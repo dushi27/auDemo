@@ -3,29 +3,48 @@ class AppsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def communication   
-    @apps = App.where skill: 'Communication'
-    redirect_to root_path, notice: 'Do not have any apps in that skill catagory.' if @apps.empty
-    render 'index'
+    @apps = App.where(skill: 'Communication')
+    if @apps.empty?
+      redirect_to apps_url, notice: 'No apps on the Communication catagory'    
+    else
+      render 'index'
+    end
   end
   
   def behavior
     @apps = App.where(skill: 'Behavior Skills')
-    render 'index'
+    if @apps.empty?
+      redirect_to apps_url, notice: 'No apps on the Behavior catagory'    
+    else
+      render 'index'      
+    end
   end
   
   def motor
-    @apps = App.where(skill: 'communication')
-    render 'index'
+    @apps = App.where(skill: 'Fine Motor Skills')
+    if @apps.empty?
+      redirect_to apps_url, notice: 'No apps on the Communication catagory'    
+    else
+      render 'index'
+    end
   end
   
   def safty
     @apps = App.where(skill: 'Safty Skills')
-    render 'index'
+    if @apps.empty?
+      redirect_to apps_url, notice: 'No apps on the Safty catagory'    
+    else
+      render 'index'
+    end
   end
   
   def living
     @apps = App.where(skill: 'Daily Living Skills')
-    render 'index'
+    if @apps.empty?
+      redirect_to apps_url, notice: 'No apps on the Daily Living catagory'    
+    else
+      render 'index'
+    end
   end
   
   def index

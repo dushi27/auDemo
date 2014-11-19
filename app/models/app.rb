@@ -1,6 +1,7 @@
 class App < ActiveRecord::Base
   belongs_to :user
-
+  has_many :comments
+  
   validates :name, presence: true
   validates :user_id, presence: true  
   validates :price, numericality: true

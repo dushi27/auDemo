@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
+  resources :comments
+
   devise_for :users
   root 'apps#index'
   resources :apps
   
   get 'static/home' => 'static#home'
   
-  #match 'apps/communication' => 'apps#communication'
-  get 'apps/communication', to: 'apps#communication', as: 'apps_communication'
-  get 'apps/behavior', to: 'apps#behavior', as: 'apps_behavior'
-  get 'apps/motor', to: 'apps#motor', as: 'apps_motor'
-  get 'apps/safty', to: 'apps#safty', as: 'apps_safty'
-  get 'apps/living', to: 'apps#living', as: 'apps_living'
+  get '/communication', to: 'apps#communication', as: 'communication'
+  get '/behavior', to: 'apps#behavior', as: 'behavior'
+  get '/motor', to: 'apps#motor', as: 'motor'
+  get '/safty', to: 'apps#safty', as: 'safty'
+  get '/living', to: 'apps#living', as: 'living'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

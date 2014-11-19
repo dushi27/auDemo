@@ -19,6 +19,15 @@
       <strong>Price:</strong>
       <%= @app.price %>
     </p>
+    <p>
+      <strong>Comments</strong>
+      <% @app.comments.each do |text| %>
+      <%=content_tag(:p, text.content)%>
+      <%end%>
+    </p>
+    <div>
+      <%= render 'apps/comment_form'%>
+    </div>
   </div>
 <%= link_to 'Back', apps_path %>
 </div>
