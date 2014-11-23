@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
+    @app = App.find(params[:app_id])
+    @comment = @app.comments.create(comment_params)
 
     respond_to do |format|
       if @comment.save
