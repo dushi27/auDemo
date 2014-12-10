@@ -1,11 +1,11 @@
 class App < ActiveRecord::Base
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   
   validates :name, presence: true
   validates :user_id, presence: true  
   validates :price, numericality: true
-  validates :video_link, presence: true
+  #validates :video_link, presence: true
   validates :web_link, presence: true
 
   

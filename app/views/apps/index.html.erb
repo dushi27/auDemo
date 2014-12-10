@@ -1,20 +1,24 @@
 <h1>Listing apps</h1>
 <div class="row">
  <% @apps.each do |app| %>
-  <div class="col-xs-6 panel panel-default">
+  <div class="col-md-4 panel panel-default">
     <div class='contaner'>
     <h3><%= app.name.upcase %></h3>  
       <div class="embed-responsive embed-responsive-4by3">
-        <iframe class="embed-responsive-item" src=<%=link(app.video_link)%>></iframe>
+        <%if app.video_link.present?%>
+          <iframe class="embed-responsive-item" src=<%=link(app.video_link)%>></iframe>
+        <%else%>
+        <%= image_tag "data:image/jpeg;base64,#{app.images}", class:'img-responsive'%>
+        <%end%>
       </div>
       <div class="panel-body">
         <p>Skill: <%= app.skill %></p>      
-        <p>Price: <%= app.price %></p>
-      </div>
-     
+        <p>Price: $<%= app.price %></p>
+      </div>      
         <%= link_to 'Vendor Site', "#{app.web_link}", class:'btn btn-info' %>
         <%= link_to 'Details', app, class:'btn btn-success' %>
-        <%if user_signed_in? && current_user.id == app.user_id%>
+        <%if user_signed_in? %>
+      <!--&& current_user.id == app.user_id--!>
           <%= link_to 'Edit', edit_app_path(app), class:'btn btn-warning' %>
           <%= link_to 'Delete', app, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger'%>
         <%end%>   

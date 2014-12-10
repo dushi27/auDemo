@@ -1,6 +1,6 @@
 class AppsController < ApplicationController
   before_action :set_app, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :destroy]
 
   def communication   
     @apps = App.where(skill: 'Communication')
@@ -62,7 +62,12 @@ class AppsController < ApplicationController
   end
 
   def create
+    #raise params.inspect
     @app = current_user.apps.create(app_params)
+   if (params["app"]["application_image"]).present?
+     image =(params["app"]["application_image"]).read
+     @app.images = Base64.encode64(image)
+   end
 
     respond_to do |format|
       if @app.save
@@ -101,7 +106,7 @@ class AppsController < ApplicationController
      @app = App.find(params[:id])
     end
 
-    def app_params
-      params.require(:app).permit(:name, :skill, :video_link, :web_link, :price, :user_id)
-    end
+  def app_params
+    params.require(:app).permit(:name, :skill, :video_link, :web_link, :price, :user_id, :images)
+    end    
 end

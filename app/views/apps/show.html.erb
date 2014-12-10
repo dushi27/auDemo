@@ -11,13 +11,16 @@
       <%= @app.skill %>
     </p>
     <p>
-      <strong>Web link:</strong>
-      <%= @app.web_link %>
-    </p>
-
-    <p>
-      <strong>Price:</strong>
+      <strong>Price: $</strong>
       <%= @app.price %>
+    </p>
+    <p>
+      <%if @app.images.present?%>
+        <%= image_tag "data:image/jpeg;base64,#{@app.images}"%>
+      <%end%>
+    </p>
+    <p>
+      <%=link_to 'Visit Vendor Site', "#{@app.web_link}", :target => "_blank", class:'btn btn-primary' %>
     </p>
  
       <h2>Comments</h2>

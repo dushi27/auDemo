@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
   def index
-    @comments = Comment.all
+    @app = App.find(params[:app_id])
+    @comments = @app.comments.all
   end
 
   def show
@@ -44,6 +45,8 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    raise params.inspect 
+    @app = App.find(params[:app_id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
