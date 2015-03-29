@@ -47,11 +47,32 @@ class AppsController < ApplicationController
     end
   end
   
-  def index
+  def index      
     @apps = App.all
+      respond_to do |format|
+          format.html
+          format.pdf do 
+               pdf = Prawn::Document.new
+                    pdf.text 'Hello World'
+                    send_data pdf.render, filename: "test.pdf", 
+                                          type: "application/pdf",
+                                          desposition: "inline"
+          end
+      end
   end
 
   def show
+      raise params.inspect
+      respond_to do |format|
+          format.html
+          format.pdf do 
+               pdf = Prawn::Document.new
+                    pdf.text 'show action'
+                    send_data pdf.render, filename: "test.pdf", 
+                                          type: "application/pdf",
+                                          desposition: "inline"
+          end
+      end
   end
 
   def new

@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'devise'
 gem 'masonry-rails', '~>0.2.0'
+gem 'prawn'
 
 group :development, :test do
   gem 'sqlite3'
